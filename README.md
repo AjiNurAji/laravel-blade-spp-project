@@ -12,6 +12,9 @@
 ## Configuration
 <p>Berikut cara mengistall atau mengklone aplikasi pembayaran spp ke local storage atau kompoter yang digunakan :</p>
 <ol>
-  <li>Lakukan cloning project ini menggunakan terminal (cmd, git bash, powershell, dll) di tempat (folder) yang diinginkan    <br> `git clone https://github.com/AjiNurAji/laravel-blade-spp-project.git`
+  <li>Lakukan cloning project ini menggunakan terminal (cmd, git bash, powershell, dll) di tempat (folder) yang diinginkan    <br> 
+      ```
+      git clone https://github.com/AjiNurAji/laravel-blade-spp-project.git
+      ```
   </li>
 </ol>
