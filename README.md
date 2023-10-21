@@ -7,7 +7,7 @@ Ditujukan untuk memenuhi Uji Kompetensi Keahlian Jurusan PPLG 2023.
 Teknologi dan library yang digunakan :
 1. Laravel (<a href="https://laravel.com/docs/10.x" target="_blank">dokumentasi</a>)
 2. Bootstrap (<a href="https://realrashid.github.io/sweet-alert/install" target="_blank">dokumentasi</a>)
-3. SweetAlert (<a href="https://getbootstrap.com/docs/5.3/getting-started/introduction/" target="_blank">dokumentasi</a>
+3. SweetAlert (<a href="https://getbootstrap.com/docs/5.3/getting-started/introduction/" target="_blank">dokumentasi</a>)
 4. Ready Bootstrap Dashboard by themekita (<a href="https://themekita.com/ready-bootstrap-dashboard.html" target="_blank">dokumentasi</a>)
 
 ## Configuration
