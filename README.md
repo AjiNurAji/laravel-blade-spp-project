@@ -16,3 +16,68 @@ Berikut cara mengistall atau mengklone aplikasi pembayaran spp ke local storage 
 ```
 git clone https://github.com/AjiNurAji/laravel-blade-spp-project.git
 ```
+2. Install dependensi yang dibutuhkan (supaya ada vendor)
+```
+composer install
+```
+or
+```
+composer update
+```
+3. Copy `.env.example` dan rename menjadi `.env`
+4. Nyalakan server MYSQL dan Apache (XAMPP, MAMP, dll), Lalu buat database di phpMyadmin
+5. Ubah isi `DB_DATABASE` dengan nama database yang dibuat
+6. Lalu jalankan migrasi dan seeder
+```
+php artisan migrate --seed
+```
+7. Jalankan server
+```
+php artisan serve
+```
+8. Buka url dibawah menggunakan browser (Chrome, Edge, FireFox, Opera, dll)
+```
+http://127.0.0.1:8000
+```
+
+## User yang disediakan
+<table>
+    <thead>
+        <td>Role</td>
+        <td>Username or Nisn</td>
+        <td>Password</td>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Administrator</td>
+            <td>abdul</td>
+            <td>abdul</td>
+        </tr>
+        <tr>
+            <td>Petugas</td>
+            <td>ahmad</td>
+            <td>ahmad</td>
+        </tr>
+        <tr>
+            <td rowspan="5">Siswa</td>
+            <td>001123</td>
+            <td>001123</td>
+        </tr>
+        <tr>
+            <td>001124</td>
+            <td>001124</td>
+        </tr>
+        <tr>
+            <td>001125</td>
+            <td>001125</td>
+        </tr>
+        <tr>
+            <td>001126</td>
+            <td>001126</td>
+        </tr>
+        <tr>
+            <td>001127</td>
+            <td>001127</td>
+        </tr>
+    </tbody>
+</table>
