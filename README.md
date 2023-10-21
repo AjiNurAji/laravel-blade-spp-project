@@ -4,7 +4,7 @@ Ditujukan untuk memenuhi Uji Kompetensi Keahlian Jurusan PPLG 2023.
 > Projek ini merupakan _project open source_, Anda dapat download/fork/clone pada projek ini.
 > Aplikasi ini memiliki 3 Role user yaitu Administrator, Petugas, & Siswa.
 
-- Teknologi dan library yang digunakan :
+Teknologi dan library yang digunakan :
 1. Laravel (<a href="https://laravel.com/docs/10.x" target="_blank">dokumentasi</a>)
 2. Bootstrap (<a href="https://realrashid.github.io/sweet-alert/install" target="_blank">dokumentasi</a>)
 3. SweetAlert (<a href="https://getbootstrap.com/docs/5.3/getting-started/introduction/" target="_blank">dokumentasi</a>
