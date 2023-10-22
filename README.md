@@ -25,17 +25,21 @@ or
 composer update
 ```
 3. Copy `.env.example` dan rename menjadi `.env`
-4. Nyalakan server MYSQL dan Apache (XAMPP, MAMP, dll), Lalu buat database di phpMyadmin
-5. Ubah isi `DB_DATABASE` dengan nama database yang dibuat
-6. Lalu jalankan migrasi dan seeder
+4. Generate app key
+```
+php artisan key:generate
+```
+5. Nyalakan server MYSQL dan Apache (XAMPP, MAMP, dll), Lalu buat database di phpMyadmin
+6. Ubah isi `DB_DATABASE` dengan nama database yang dibuat
+7. Lalu jalankan migrasi dan seeder
 ```
 php artisan migrate --seed
 ```
-7. Jalankan server
+8. Jalankan server
 ```
 php artisan serve
 ```
-8. Buka url dibawah menggunakan browser (Chrome, Edge, FireFox, Opera, dll)
+9. Buka url dibawah menggunakan browser (Chrome, Edge, FireFox, Opera, dll)
 ```
 http://127.0.0.1:8000
 ```
