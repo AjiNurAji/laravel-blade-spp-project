@@ -27,11 +27,19 @@ class AuthController extends Controller
         ];
 
         if (Auth::guard('petugas')->attempt($credentials)) {
-            return "<script> alert('Selamat datang ".Auth::guard('petugas')->user()->nama_petugas."')</script>";
+            $request->session()->regenerate();
+            return redirect()->route('homepage');
         } else  if (Auth::guard('siswa')->attempt($credentialsSiswa)) {
-            return "<script> alert('Selamat datang ".Auth::guard('siswa')->user()->nama."')</script>";
+            return redirect()->route('homepage');
         }
 
         return redirect()->route('login')->withInput()->withErrors(['login_gagal' => 'Login gagal, username atau password salah!']);
+    }
+
+    public function logout(Request $request)
+    {
+        $request->session()->flush();
+        Auth::logout();
+        return redirect()->route('login');
     }
 }

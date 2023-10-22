@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomepageController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -23,3 +24,18 @@ Route::get('/', function () {
 })->name('login');
 
 Route::post('/proses_login', [AuthController::class, 'proses_login'])->name('proses_login');
+
+// Route all
+Route::middleware(['auth:petugas,siswa'])->group(function () {
+    // Route homepage
+    Route::get('/homepage', [HomepageController::class, 'index'])->name('homepage');
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+});
+
+Route::get('/crud-data-siswa')->name('crud-data-siswa');
+Route::get('/crud-data-kelas')->name('crud-data-kelas');
+Route::get('/crud-data-spp')->name('crud-data-spp');
+Route::get('/crud-data-petugas')->name('crud-data-petugas');
+Route::get('/create-data-transaksi')->name('create-data-transaksi');
+Route::get('/histori-bayar')->name('histori-bayar');
+Route::get('/user-setting')->name('user-setting');
