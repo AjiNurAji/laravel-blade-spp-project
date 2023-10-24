@@ -24,4 +24,19 @@ class Pembayaran extends Model
         'id_spp',
         'jumlah_bayar'
     ];
+
+    public function siswa()
+    {
+        return $this->belongsTo(Siswa::class, 'nisn');
+    }
+
+    public function spp()
+    {
+        return $this->belongsTo(Spp::class, 'id_spp');
+    }
+
+    public function petugas()
+    {
+        return $this->belongsTo(Petugas::class, 'id_petugas');
+    }
 }

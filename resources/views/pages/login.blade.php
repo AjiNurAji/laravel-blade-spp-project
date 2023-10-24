@@ -71,11 +71,11 @@
                         <form method="post" class="login100-form validate-form" action="{{ route('proses_login') }}">
                             @csrf
 
-                            @error('login_gagal')
+                            {{-- @error('login_gagal')
                                 <div class="alert alert-danger" role="alert">
                                     {{ $message }}
                                 </div>
-                            @enderror
+                            @enderror --}}
 
                             <p>Please login to your account</p>
 
@@ -83,7 +83,7 @@
                                 <label class="form-label" for="username">Username</label>
                                 <input type="text" id="username" class="form-control"
                                     placeholder="Username" name="username" required />
-                                <p class="mt-1 text-muted" style="font-size: 10px;">Note: <i>Untuk siswa masukan username dengan NISN!</i></p>
+                                <p class="mt-1 text-muted" style="font-size: 10px;">Note: <em>Untuk siswa masukan username dengan NISN!</em></p>
                             </div>
 
                             <div class="form-outline mb-4">

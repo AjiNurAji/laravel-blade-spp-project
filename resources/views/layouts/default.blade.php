@@ -6,6 +6,7 @@
 </head>
 
 <body class="antialiased">
+    @include('sweetalert::alert')
     @yield('content')
 </body>
 @include('includes.footer')

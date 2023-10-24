@@ -19,4 +19,9 @@ class Kelas extends Model
         'nama_kelas',
         'kompetensi_keahlian',
     ];
+
+    public function siswa()
+    {
+        return $this->hasMany(Siswa::class, 'nisn');
+    }
 }

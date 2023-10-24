@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomepageController;
 use Illuminate\Support\Facades\Auth;
@@ -32,10 +33,16 @@ Route::middleware(['auth:petugas,siswa'])->group(function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 
-Route::get('/crud-data-siswa')->name('crud-data-siswa');
+// Route for petugas
+Route::middleware(['auth:petugas'])->group(function () {
+    Route::get('/data-siswa', [AdminController::class, 'viewDataSiswa'])->name('crud-data-siswa');
+});
 Route::get('/crud-data-kelas')->name('crud-data-kelas');
+Route::get('/data-siswa/create')->name('create-data-siswa');
 Route::get('/crud-data-spp')->name('crud-data-spp');
 Route::get('/crud-data-petugas')->name('crud-data-petugas');
 Route::get('/create-data-transaksi')->name('create-data-transaksi');
 Route::get('/histori-bayar')->name('histori-bayar');
 Route::get('/user-setting')->name('user-setting');
+Route::get('/edit-siswa')->name('edit-siswa');
+Route::get('/softdelete-siswa-siswa')->name('softdelete-data-siswa');

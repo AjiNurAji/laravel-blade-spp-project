@@ -6,6 +6,7 @@ use App\Models\Kelas;
 use App\Models\Pembayaran;
 use App\Models\Petugas;
 use App\Models\Siswa;
+use App\Models\Spp;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -43,6 +44,39 @@ class HomepageController extends Controller
                 // Send data to homepage
                 return view('pages.homepage', ['petugas' => $userData]);
             }
+        } else {
+            // Set Kelas siswa
+            $kelasSiswa = $userData->kelas;
+            $userData->kelas = $kelasSiswa;
+
+            // Nama bulan kalender indonesia
+            $bulan = [
+                'Januari',
+                'Februari',
+                'Maret',
+                'April',
+                'Mei',
+                'Juni',
+                'Juli',
+                'Agustus',
+                'September',
+                'Oktober',
+                'Novermber',
+                'Desember'
+            ];
+
+            // Get data transaksi
+            $nisn = $userData->nisn;
+            $currentYear = date('Y');
+            $histori = Pembayaran::with(['siswa', 'siswa.spp'])->where('nisn', $nisn)->get();
+            $nominalSpp = Spp::where('tahun', $currentYear)->value('nominal');
+
+            return view('pages.homepage', [
+                'siswa' => $userData,
+                'bulan' => $bulan,
+                'histori' => $histori,
+                'nominal' => $nominalSpp
+            ]);
         }
     }
 }

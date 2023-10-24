@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AuthController extends Controller
 {
@@ -28,18 +29,22 @@ class AuthController extends Controller
 
         if (Auth::guard('petugas')->attempt($credentials)) {
             $request->session()->regenerate();
+            Alert::success('Berhasil login', 'Selamat datang, '.Auth::guard('petugas')->user()->nama_petugas);
             return redirect()->route('homepage');
         } else  if (Auth::guard('siswa')->attempt($credentialsSiswa)) {
+            Alert::success('Berhasil login', 'Selamat datang, '.Auth::guard('siswa')->user()->nama);
             return redirect()->route('homepage');
         }
 
-        return redirect()->route('login')->withInput()->withErrors(['login_gagal' => 'Login gagal, username atau password salah!']);
+        Alert::error('Login gagal', 'Username atau password salah atau data tidak ditemukan!');
+        return redirect()->route('login');
     }
 
     public function logout(Request $request)
     {
         $request->session()->flush();
         Auth::logout();
+        Alert::success('Logout berhasil','Terimakasih sudah menggunakan aplikasi ini😊');
         return redirect()->route('login');
     }
 }

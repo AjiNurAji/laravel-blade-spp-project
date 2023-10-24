@@ -6,6 +6,7 @@
 </head>
 
 <body class="antialiased">
+  @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
   <div class="wrapper">
     @include('includes.dashboard.topbar')
     @include('includes.dashboard.leftsidebar')

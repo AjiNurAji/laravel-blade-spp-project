@@ -27,4 +27,9 @@ class Petugas extends Authenticatable
     ];
 
     protected $hidden = ['password'];
+
+    public function pembayaran()
+    {
+        return $this->hasMany(Pembayaran::class, 'id_pembayaran');
+    }
 }
