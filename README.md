@@ -30,7 +30,7 @@ composer update
 php artisan key:generate
 ```
 5. Nyalakan server MYSQL dan Apache (XAMPP, MAMP, dll), Lalu buat database di phpMyadmin
-6. Ubah isi `DB_DATABASE` dengan nama database yang dibuat
+6. Ubah isi `DB_DATABASE` pada `.env` dengan nama database yang dibuat
 7. Lalu jalankan migrasi dan seeder
 ```
 php artisan migrate --seed
