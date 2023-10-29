@@ -8,6 +8,16 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class AuthController extends Controller
 {
+    public function index()
+    {
+         // Mendapatkan data siswa yang sedang login
+        $siswa = Auth::guard('siswa')->user();
+        // dd($siswa);
+
+        // Memuat halaman dashboard siswa dan mengirim data siswa ke view
+        return view('pages.login',['siswa' => $siswa]);
+    }
+
     public function proses_login(Request $request)
     {
         request()->validate([
