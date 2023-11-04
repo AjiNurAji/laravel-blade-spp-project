@@ -4,7 +4,7 @@
       <span>UJI KOMPETENSI PPLG</span>
     </nav>
     <div class="copyright ml-auto">
-      2023, made with <i class="la la-heart heart text-danger"></i> by Aji
+      2023, made with <i class="la la-heart heart text-danger"></i> by EGI
     </div>				
   </div>
 </footer>

@@ -40,9 +40,17 @@
                         <a href="{{ route('edit-siswa', ['id' => $item['nisn']]) }}" class="mr-2 text-decoration-none text-warning">
                           <h5 class="d-inline-block"><i class="la la-edit"></i></h5>
                         </a>
-                        <a href="{{ route('softdelete-data-siswa', $item['nisn']) }}" class="mr-2 text-decoration-none text-danger">
-                          <h5 class="d-inline-block"><i class="la la-trash"></i></h5>
-                        </a>
+                        <form action="{{ route('softdelete-data-siswa', $item['nisn']) }}" method="POST" class="d-inline-block">
+                          @csrf
+
+                          @method('DELETE')
+
+                          <button type="submit" class="text-danger d-inline-block" style="border: none; background: transparent; cursor: pointer;">
+                            <h5 class="d-inline-block">
+                              <i class="la la-trash"></i>
+                            </h5>
+                          </button>
+                        </form>
                       </td>
                     </tr>
                   @endforeach
