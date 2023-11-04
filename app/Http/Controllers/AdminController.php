@@ -6,11 +6,11 @@ use App\Models\Kelas;
 use App\Models\Pembayaran;
 use App\Models\Siswa;
 use App\Models\Spp;
-use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use RealRashid\SweetAlert\Facades\Alert;
+use PDF;
 
 class AdminController extends Controller
 {
@@ -197,6 +197,14 @@ class AdminController extends Controller
         // $pdf = PDF::loadView('pages.historiBayar',['petugas' => $userData, 'historiSPP' => $historiSPP]);
         $pdf = PDF::loadView('pdf.example', ['petugas' => $userData, 'historiSPP' => $historiSPP]);
         $pdf->setPaper('a4', 'landscape');
-        return $pdf->download('ejemplo.pdf');
+        try
+        $download = $pdf->download('Laporan.pdf');
+        if ($download) {
+            Alert::success('Success', 'Laporan berhasil digenerate');
+            return redirect()->route('histori-bayar');
+        } else {
+            Alert::success('Error', 'Laporan gagal digenerate');
+            return redirect()->route('histori-bayar');
+        }
     }
 }

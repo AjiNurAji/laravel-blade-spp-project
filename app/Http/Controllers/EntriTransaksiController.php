@@ -48,10 +48,21 @@ class EntriTransaksiController extends Controller
                 'Desember'
             ];
             $nisnSiswa = $siswa->nisn;
-            $currentYear = date('Y');
-            $historiSPP = Pembayaran::with(['siswa', 'siswa.spp'])->where('nisn', $nisnSiswa)->get();
+            // $currentYear = date('Y');
+            $currentYear = '2024';
+            // if change year
+            if ($siswa->spp->tahun < $currentYear) {
+                $siswa->update([
+                    'id_spp' => $siswa->id_spp + 1
+                ]);
+            } else {
+                $siswa->update([
+                    'id_spp' => $siswa->id_spp - 1
+                ]);
+            }
+            $historiSPP = Pembayaran::with(['siswa', 'siswa.spp'])->where('nisn', $nisnSiswa)->where('tahun_dibayar', $currentYear)->get();
             $nominalSPPsekarang = Spp::where('tahun', $currentYear)->value('nominal');
-            return view('pages.crud.transaksi.edit',['petugas' => $userData, 'siswa' => $siswaJson, 'bulan' => $bulan, 'historiSPP' => $historiSPP, 'nominalSPP' => $nominalSPPsekarang]);
+            return view('pages.crud.transaksi.edit',['petugas' => $userData, 'siswa' => $siswaJson, 'bulan' => $bulan, 'historiSPP' => $historiSPP, 'nominalSPP' => $nominalSPPsekarang, 'currentYear' => $currentYear]);
         } catch (\Exception $e) {
             // echo "woy";
             // print_r($e);
@@ -94,7 +105,7 @@ class EntriTransaksiController extends Controller
                 //     'message' => 'Data berhasil disimpan!',
                 //     'status' => 'ok',
                 // ]);
-                return redirect()->back();
+                return redirect()->route('histori-bayar');
             } else {
                 Alert::error('Error', 'Data gagal disimpan, cek kembali data yang anda masukan!');
                 // return redirect()->back()

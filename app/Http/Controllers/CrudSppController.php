@@ -17,18 +17,18 @@ class CrudSppController extends Controller
 
     public function viewDataSpp()
     {
-        $checkUserLoginData =  Auth::guard('petugas')->user();
+        $userData =  Auth::guard('petugas')->user();
         $spps = Spp::get()->toArray();
-        return view('pages.crud.spp.view', ['petugas' => $checkUserLoginData, 'spps' => $spps]);
+        return view('pages.crud.spp.view', ['petugas' => $userData, 'spps' => $spps]);
     }
 
     public function editDataSpp(string $id)
     {
         try {
-            $checkUserLoginData =  Auth::guard('petugas')->user();
+            $userData =  Auth::guard('petugas')->user();
             // Retrieve the user data by ID using findOrFail
             $sppData = Spp::findOrFail($id);
-            return view('pages.crud.spp.edit', ['petugas' => $checkUserLoginData, 'sppData' => $sppData]);
+            return view('pages.crud.spp.edit', ['petugas' => $userData, 'sppData' => $sppData]);
         } catch (\Exception $e) {
             // Handle the case where the siswa is not found
             return abort(404);
@@ -91,8 +91,8 @@ class CrudSppController extends Controller
     public function createDataSpp()
     {
         try {
-            $checkUserLoginData =  Auth::guard('petugas')->user();
-            return view('pages.crud.spp.create', ['petugas' => $checkUserLoginData]);
+            $userData =  Auth::guard('petugas')->user();
+            return view('pages.crud.spp.create', ['petugas' => $userData]);
         } catch (\Exception $e) {
             // echo "error kje";
             //  echo $e->getMessage();
@@ -120,7 +120,7 @@ class CrudSppController extends Controller
                 //     'message' => 'Data berhasil disimpan!',
                 //     'status' => 'ok',
                 // ]);
-                return redirect()->back();
+                return redirect()->route('crud-data-spp');
             } else {
                 Alert::error('Create gagal', 'Data gagal diperbaharui, cek kembali data yang anda masukan!');
                 // return redirect()->back()

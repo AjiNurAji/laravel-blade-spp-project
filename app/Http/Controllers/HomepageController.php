@@ -83,7 +83,7 @@ class HomepageController extends Controller
 
     public function historiBayar()
     {
-        $userData = $this->getUserLoginData();
+        $userData = $this->getUserLogin();
         if (Auth::guard('siswa')->check()) {
             $nisnSiswa = $userData->nisn;
             $historiSPP = Pembayaran::with(['siswa', 'spp', 'petugas'])->where('nisn', $nisnSiswa)->get()->toArray();
@@ -100,7 +100,7 @@ class HomepageController extends Controller
      */
     public function userSetting()
     {
-        $userData = $this->getUserLoginData();
+        $userData = $this->getUserLogin();
         if (Auth::guard('siswa')->check()) {
             $kelasSiswa = $userData->kelas;
             $userData->kelas = $kelasSiswa;
@@ -112,7 +112,7 @@ class HomepageController extends Controller
 
     public function userUpdateSetting(Request $request)
     {
-        $userData = $this->getUserLoginData();
+        $userData = $this->getUserLogin();
         if (Auth::guard('siswa')->check()) {
             $nisnSiswa = $userData->nisn;
             $request->validate([
@@ -152,7 +152,7 @@ class HomepageController extends Controller
 
     public function petugasUpdateSetting(Request $request)
     {
-        $userData = $this->getUserLoginData();
+        $userData = $this->getUserLogin();
         if (Auth::guard('petugas')->check()) {
             $levelCurrent = $userData->level;
 
