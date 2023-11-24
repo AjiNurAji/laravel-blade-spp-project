@@ -3,7 +3,7 @@
     <div class="content">
         <div class="container-fluid">
             <div class="row row-card-no-pd">
-                {{var_dump($historiSPP->pluck('bulan_dibayar')->toArray())}}
+                {{-- {{var_dump($historiSPP->pluck('bulan_dibayar')->toArray())}} --}}
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">

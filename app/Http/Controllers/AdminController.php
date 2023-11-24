@@ -197,14 +197,14 @@ class AdminController extends Controller
         // $pdf = PDF::loadView('pages.historiBayar',['petugas' => $userData, 'historiSPP' => $historiSPP]);
         $pdf = PDF::loadView('pdf.example', ['petugas' => $userData, 'historiSPP' => $historiSPP]);
         $pdf->setPaper('a4', 'landscape');
-        try
-        $download = $pdf->download('Laporan.pdf');
-        if ($download) {
-            Alert::success('Success', 'Laporan berhasil digenerate');
-            return redirect()->route('histori-bayar');
-        } else {
-            Alert::success('Error', 'Laporan gagal digenerate');
-            return redirect()->route('histori-bayar');
-        }
+        // $pdf->download('Laporan.pdf');
+        
+        return $pdf->download('Laporan.pdf');
+        // if ($pdf->download('Laporan.pdf')) {
+        //     Alert::success('Success', 'Laporan berhasil digenerate');
+        // } else {
+        //     Alert::success('Error', 'Laporan gagal digenerate');
+        //     return redirect()->route('histori-bayar');
+        // }
     }
 }
