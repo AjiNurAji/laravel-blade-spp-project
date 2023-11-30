@@ -15,6 +15,10 @@ i {
   float: inline-end;
 }
 
+.content {
+  margin-top: 35px !important;
+}
+
 .edit-back {
   gap: 10px;
 }

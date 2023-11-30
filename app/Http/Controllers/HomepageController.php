@@ -42,9 +42,9 @@ class HomepageController extends Controller
                 $userData->totalKelas = $totalKelas;
                 $userData->totalPembayaran = $totalPembayaran;
 
-                // Send data to homepage
-                return view('pages.homepage', ['petugas' => $userData]);
             }
+            // Send data to homepage
+            return view('pages.homepage', ['petugas' => $userData]);
         } else {
             // Set Kelas siswa
             $kelasSiswa = $userData->kelas;
@@ -75,8 +75,8 @@ class HomepageController extends Controller
             return view('pages.homepage', [
                 'siswa' => $userData,
                 'bulan' => $bulan,
-                'histori' => $histori,
-                'nominal' => $nominalSpp
+                'historiSPP' => $histori,
+                'nominalSPP' => $nominalSpp
             ]);
         }
     }

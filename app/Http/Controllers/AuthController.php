@@ -42,6 +42,7 @@ class AuthController extends Controller
             Alert::success('Berhasil login', 'Selamat datang, '.Auth::guard('petugas')->user()->nama_petugas);
             return redirect()->route('homepage');
         } else  if (Auth::guard('siswa')->attempt($credentialsSiswa)) {
+            $request->session()->regenerate();
             Alert::success('Berhasil login', 'Selamat datang, '.Auth::guard('siswa')->user()->nama);
             return redirect()->route('homepage');
         }
